@@ -9,7 +9,7 @@ import decipher
 os.environ['TZ'] = 'US/Eastern'
 time.tzset()
 
-@get('/q1')
+@route('/q1')
 def process():
 	params = []
 	message = decipher.decipher()

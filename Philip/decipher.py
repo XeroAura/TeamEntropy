@@ -2,6 +2,7 @@
 
 import sys
 import math
+import string
 
 def decipher(argv):
 	if len(argv) != 3:
@@ -23,27 +24,40 @@ def decipher(argv):
 
 	# Convert Cipher to Intermediate text
 	# i = intermediate message
-	size = math.sqrt(len(c))
-	matrix = [[ c[j*size + i] for i in range(size)] for j in range(size)]
+	size = int(math.sqrt(len(c)))
+
+	matrix = [[ c[j*size + i] for i in range(0, size)] for j in range(0, size)]
 	i = ""
-	for k in range(size):
+	# Top left half of matrix
+	for k in range(0, size):
 		a = k
 		b = 0
 		while True:
-			i.append(matrix[a][b])
+			i = i + matrix[b][a]
 			if a == 0:
 				break
 			else:
 				a = a - 1
 				b = b + 1
 
+	# Bottom right half of matrix
+	for l in range(1, size):
+		a = size-1
+		b = l
+		while True:
+			i = i + matrix[b][a]
+			if b == size-1:
+				break
+			else:
+				a = a - 1
+				b = b + 1
+
 	# Shift message back Z characters
+	shift = dict(zip(string.lowercase, string.lowercase[z:] + string.lowercase[:z]))
+	shift.update(zip(string.uppercase, string.uppercase[z:] + string.uppercase[:z]))
 	message = ""
 	for char in i:
-		temp = ord(char)
-		temp = temp + z
-		message.append(chr(x if 97 <= x <= 122 else 96 + x % 122))
-
+		message = message + shift.get(char)
 	print message
 
 if __name__ == "__main__":
