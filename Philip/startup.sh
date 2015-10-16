@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo python ~/project/service.py
+sudo python ~/project/service.py &
