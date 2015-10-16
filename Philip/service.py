@@ -20,5 +20,5 @@ def process():
 	page = "Team Entropy, 846185807052\n" + str(time) + "\n" + str(result) + "\n"
 	return page
 
-run(host='localhost', port=80)
-# run(port=80) for real attempt
+# run(host='localhost', port=80)
+run(host='0.0.0.0', port=80, quiet=True, server='paste')

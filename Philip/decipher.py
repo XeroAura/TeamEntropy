@@ -58,7 +58,7 @@ def decipher(argv):
 	message = ""
 	for char in i:
 		message = message + shift.get(char)
-	print message
+	return message
 
 if __name__ == "__main__":
 	decipher(sys.argv)
