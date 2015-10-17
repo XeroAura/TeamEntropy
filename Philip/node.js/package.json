@@ -1,0 +1,10 @@
+{
+  "name"         : "15619entropy",
+  "version"      : "0.0.1",
+  "description"  : "Decipher service.",
+  "main"         : "server.js",
+  "author"       : "Philip",
+  "dependencies" : {
+    "express"    : "~4.7.2"
+    }
+}

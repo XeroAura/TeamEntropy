@@ -19,21 +19,20 @@ def decipher(argv):
 	xy = int(argv[1])
 	c =  argv[2]
 
-	y = xy/x
-	z = 1 + y%25
+	z = 1 + (xy/x)%25
 
 	# Convert Cipher to Intermediate text
 	# i = intermediate message
 	size = int(math.sqrt(len(c)))
 
 	matrix = [[ c[j*size + i] for i in range(0, size)] for j in range(0, size)]
-	i = ""
+	i = []
 	# Top left half of matrix
 	for k in range(0, size):
 		a = k
 		b = 0
 		while True:
-			i = i + matrix[b][a]
+			i.append(matrix[b][a])
 			if a == 0:
 				break
 			else:
@@ -45,20 +44,17 @@ def decipher(argv):
 		a = size-1
 		b = l
 		while True:
-			i = i + matrix[b][a]
+			i.append(matrix[b][a])
 			if b == size-1:
 				break
 			else:
 				a = a - 1
 				b = b + 1
-
+	inter = "".join(i)
 	# Shift message back Z characters
-	shift = dict(zip(string.lowercase, string.lowercase[z:] + string.lowercase[:z]))
-	shift.update(zip(string.uppercase, string.uppercase[z:] + string.uppercase[:z]))
-	message = ""
-	for char in i:
-		message = message + shift.get(char)
-	return message
+	# Shift message back Z characters
+	shift = dict(zip(string.uppercase, string.uppercase[-z:] + string.uppercase[:-z]))
+	return ''.join(shift.get(ch) for ch in i)
 
 if __name__ == "__main__":
 	decipher(sys.argv)
