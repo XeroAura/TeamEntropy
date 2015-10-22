@@ -14,6 +14,10 @@ String.prototype.format = function() {
     return formatted;
 };
 
+app.get('/', function(req, res) {
+	res.send("ok");
+});
+
 app.get('/q1', function(req, res) {
     var message_key = req.query.key;
     var cipher = req.query.message;

@@ -1,3 +1,0 @@
-#!/bin/bash
-nohup sudo nodejs /home/ubuntu/project/server.js &
-echo 'Server up.'
