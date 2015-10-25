@@ -10,6 +10,11 @@ import re
 # Process censoring
 
 afinn = {}
+censor = []
+
+def load_censor():
+	global censor
+	censor = ['chink', 'phuks', 'sh1t', 'vulva', 'clitoris', 'muff', 'v14gra', 'wanker', 'bunnyfucker', 'titwank', 'fistfucking', 'niggaz', 'queer', 'shitfuck', 'mutherfucker', 'gaysex', 'mutha', 'shitey', 'fux0r', 'cok', 'p0rn', 'blowjobs', 'fuckers', '15619cctest', 'whoreshit', 'cox', 'shited', 'jizm', 'schlong', 'numbnuts', 'blowjob', 'n1gger', 'viagra', 'nobhead', 'jerkoff', 'jizz', 'cunts', 'fucka', 'tittiefucker', 'anal', 'pissflaps', 'doggin', 'boner', 'clit', 'shithead', 'mothafucks', 'fingerfucking', 'fuckwit', 'mothafucka', 'fistfuck', 'asswhole', 'pussi', 'biatch', 'pusse', 'masturbate', 'mothafuck', 'butt', 'pussies', 'gangbang', 'ma5terbate', 'lmao', 'ejaculating', 'fukwit', 'boobs', 'booobs', 'boooobs', 'booooobs', 'faggitt', 'cuntlicker', 'scrotum', 'buceta', 'jiz', 'cummer', 'cockmuncher', 'nazi', 'fingerfucks', 'carpetmuncher', 'cl1t', 'nigg3r', 'kummer', 'cums', 'cockhead', 'sonofabitch', 'jism', 'cunilingus', 'whore', 'phuked', 'mothafucking', 'damn', 'phuk', 'fcuking', 'masterbations', 'fagot', 'fag', 'fingerfuck', 'cyalis', 'muthafuckker', 'boiolas', 'smut', 'knobjokey', 'ma5terb8', 'kondums', 'fanyy', 'assfukka', 'b00bs', 'fuckhead', 'nigga', 'lusting', 'fuckme', 'fagots', 'mofo', 'scrote', 'crap', 'heshe', 'pigfucker', 'bestial', 'wtff', 'ass', 'buttmuch', 'mof0', 'cyberfucking', 'mothafuckings', 'tosser', 'beastiality', 'titties', 'dirsa', 'phukked', 'kawk', 'dlck', 'ejaculation', 'muthafecker', 'cyberfuckers', 'arse', 'n1gga', 'fuckwhit', 'whoreanal', 'assfucker', 'cokmuncher', 'shitters', 'goatse', 'b1tch', 'horny', 'hoer', 'prick', 'fannyflaps', 'cumming', 'dickhead', 'masochist', 'cyberfuc', 'nigger', 'ejaculates', 'knobed', 'ejaculated', 'nobjokey', 'fellate', 'fuckingshitmotherfucker', 'cuntlick', 'd1ck', 'bloody', 'fook', 'shits', 'mothafuckin', 'nutsack', 'anus', 'shite', 'twathead', 'fucks', 'feck', 'motherfuckin,motherfucking', 'faggs', 'ballsack', 'fuckheads', 'shitfull', 'muther', 'dildos', 'fuck', 'fistfuckers', 'jackoff', 'fucker', 'fukker', '4r5e', 'fcuker', 'fucked', 'fags', 'pissers', 'omg', 'gangbangs', 'shittings', 'fagging', 'shiting', 'fistfucks', 'fooker', '5hit', 'niggah', 'wang', 'motherfuckka', 'wank', 'niggas', 'twunt', 'cocksucked', 'phukking', 'cocksucker', 'pron', 'fingerfuckers', 'mothafucker', '5h1t', 'gangbanged', 'titfuck', 'mothafucked', 'cockface', 'cocksuck', 'rimming', 'fuk', 'balls', 'v1gra', 'fux', 'hotsex', 'cuntlicking', 'bellend', 'wanky', 'masterb8', 'c0ck', 'twunter', 'teets', 'felching', 'fukwhit', 'fuckin', 'bastard', 'motherfuckings', 'fukkin', 'masterbat', 'homo', 'hardcoresex', 'clits', 'spunk', 'skank', 'fudgepacker', 'sh!t', 'knob', 'shitting', 'flange', 'f4nny', 'fuckings', 'sex', 'poop', 'smegma', 'shitted', 'c0cksucker', 'motherfuckers', 'piss', 'cyberfuck', 'shitter', 'mothafuckaz', 'pawnpenis', 'bugger', 'dyke', 'fecker', 'whore4r5e', 'twatty', 'dinks', 'a55', 'cawk', 'cnut', 'duche', 'cipa', 'shitings', 'motherfucker', 'pissoff', 'pussy', 'm45terbate', 'motherfucked', 'ejaculatings', 'pissin', 'dogging', 'coksucka', 'cum', 'rectum', 'niggers', 'cunt', 'fucking', 'pimpis', 'phonesex', 'whoar', 'horniest', 'jerk', 'turd', 'snatch', 'phuck', 'tittywank', 'phuking', 'coon', 'kum', 'faggot', 'fingerfucked', 'l3itch', 'knobead', 'cocksuka', 'fingerfucker', 'nobjocky', 'bollok', 'assho', 'kunilingus', 'dick', 'fuks', 'knobend', 'semen', 'cunillingus', 'fuker', 'twat', 'b!tch', 'cocks', 'pisses', 'pisser', 'assram', 'shit', 'kums', 'w00se', 'cocksukka', 'motherfuck', 'ejakulate', 'bitch', 'rimjaw', 'tit', 'breasts', 'mothafuckers', 'bollock', 'buttplug', 'cyberfucker', 'fistfuckings', 'pussys', 'scroat', 'cock', 'motherfucks', 'cyberfucked', 'knobhead', 'tw4t', 'fistfucked', 'boob', 'ejaculate', 'lmfao', 'doosh', 'pube', 'fistfucker', 'cunnilingus', 'hoare', 'shitdick', 'fcuk', 'hell', 'b17ch', 'm0fo', 'masterbation', 'phuq', 'l3ich', 'kock', 'jap', 'bestiality', 'shitty', 'm0f0', 'dogfucker', 'cocksucks', 'kondum', 'cockmunch', 'pissing', 'pricks', 'cumshot', 'slut', 'hore', 'goddamn', 'knobjocky', 'kumming', 'fellatio', 'beastial', 'lust', 'bum', 'vagina', 'cocksucking', 'hoar', 'donkeyribber', 'fannyfucker', 'tittyfuck', 'masterbat3', 'booooooobs', 'dildo', 'nigg4h', 'dink', 'penisfucker', 'labia', 'masterbate', 'mothafuckas']
 
 def load_afinn():
 	global afinn
@@ -33,22 +38,24 @@ def main(argv):
 				currentTweets.append(contents[1])
 
 		# Calculate sentiment score
+		# Censor tweet
 		score = 0
 		text = contents[3].decode('utf-8')
-		words = re.sub('[^0-9a-zA-Z]+', ' ', text).lower() # Take out the text, replace non alpha numeric, lower case
+		words = re.sub('[^0-9a-zA-Z]+', ' ', text) # Take out the text, replace non alpha numeric, lower case
 		for word in words.split(' '):
-			if word in afinn:
+			if word.lower() in afinn:
 				score = score + int(afinn[word])
-
-		# Censoring tweet
-		# Tweet is located in variable text
-		# TODO
+			if word.lower() in dirtylist:
+				censoredword = word[0] + '*'*(len(word)-2) + word[-1]
+				text.replace(word, censoredword)
 
 		# Don't forget to re-encode tweet text with (string).encode('utf-8')
+		text = text.encode('utf-8')
 
 		# Write out the format desired (csv)
 		writer.writerow([user_id, tweet_id, time, score, text])
 
 if __name__ == "__main__":
 	load_afinn()
+	load_censor()
 	main(sys.argv)
