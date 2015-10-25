@@ -29,14 +29,14 @@ def main(argv):
 			time = contents[5] + "-" + str(monthnum).zfill(2) + "-" + contents[2] + "+" + contents[3]
 			tweet_id = tweets["id_str"]
 			user_id = tweets["user"]["id_str"]
-			text = tweets["text"].encode('utf-8')
+			text = tweets["text"]
 		except KeyError:
 			print "Malformed tweet found."
-			continue()
+			continue
 
 		if time == "" or tweet_id == "" or user_id == "" or text == "":
 			print ".",
-			continue()
+			continue
 
 		print "%s\t%s\t%s\t%s" % (user_id, tweet_id, time, text)
 

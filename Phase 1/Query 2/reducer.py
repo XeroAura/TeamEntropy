@@ -26,7 +26,7 @@ def main(argv):
 	currentTweets = [] #Hold tweet ids
 
 	for row in sys.stdin: # Gives the row as a list
-		contents = row.split('\t', 4) # User id, tweet_id, time, text
+		contents = row.split('\t', 3) # User id, tweet_id, time, text
 		# Check for duplicates with currentId, currentTweets
 		if currentId != contents[0]: # If new user, clear tweet id list
 			currentId = contents[0]
