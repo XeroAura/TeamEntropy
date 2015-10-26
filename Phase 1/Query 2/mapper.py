@@ -38,7 +38,7 @@ def main(argv):
 			print ".",
 			continue
 
-		print "%s\t%s\t%s\t%s" % (user_id, tweet_id, time, text)
+		print "%s\t%s\t%s\t%s" % (user_id, tweet_id, time, json.dumps(text))
 
 
 if __name__ == "__main__":
