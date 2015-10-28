@@ -27,6 +27,8 @@ def main(argv):
 			contents = time.split(' ')
 			monthnum = month.index(contents[1])
 			time = contents[5] + "-" + str(monthnum).zfill(2) + "-" + contents[2] + "+" + contents[3]
+			if(time < "2014-02-20+00:00:00")
+				continue
 			tweet_id = tweets["id_str"]
 			user_id = tweets["user"]["id_str"]
 			text = tweets["text"]
